@@ -6,6 +6,7 @@ $(document).ready(function () {
 });
 
 function loadTestimonials() {
+  //Loads the testimonials dynamically
 	$.ajax({
 		type: 'GET',
 		url: 'https://smileschool-api.hbtn.info/quotes',
@@ -26,6 +27,7 @@ function loadTestimonials() {
 }
 
 function addTestimonial(data) {
+  //Creates a new Testimonial
 	$('.testimonals').prepend(`<div>
 		<div class="row align-items-center justify-content-center">
 			<div class="col-md-4 text-center">
@@ -45,6 +47,7 @@ function addTestimonial(data) {
 }
 
 function loadVideos(url, id) {
+  //Loads video dynamically
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -95,6 +98,7 @@ function loadVideos(url, id) {
 }
 
 function addTutorial(video, id) {
+  //Adds a new tutorial video
 	$(`#${id}`).prepend(`<div class="mx-2" id="${id}${video.id}">
 			<img class="card-img-top" src="${video.thumb_url}" alt="">
 			<div class="card-body mx-0">
@@ -113,6 +117,7 @@ function addTutorial(video, id) {
 }
 
 function addStars(video, id) {
+  //Adds a new star to the review
 	for (let on = 0; on < video.star; on++) {
 		$(`#${id} #star${video.id}`).append('<img src="images/star_on.png" height="25px" width="25px" alt="">');
 	}
@@ -123,6 +128,7 @@ function addStars(video, id) {
 
 
 function displayLoading(loading, tag) {
+  //Dynamic Loading
 	if (loading) {
 		$(tag).wrap('<div class="loader"></div>');
 	} else {
@@ -131,6 +137,7 @@ function displayLoading(loading, tag) {
 }
 
 function loadCourses() {
+  //dynamically loads the available courses
 	$('.holberton_school-icon-search_1').click(() => {
 		$('#form').empty();
 
@@ -153,6 +160,7 @@ function loadCourses() {
 }
 
 function compareFormData(search) {
+  //Checks forms against themselves
 	let videos = [];
 	$.ajax({
 		type: 'GET',
@@ -179,6 +187,7 @@ function compareFormData(search) {
 }
 
 function sortFormData(videos, search) {
+  //Sorts forms by rating, time published, and # of views
 	if (search === '1') {
 		videos.sort((a, b)=> b.star - a.star)
 	} else if (search === '2') {
@@ -194,6 +203,7 @@ function sortFormData(videos, search) {
 }
 
 function addFormData(data) {
+  //Adds new form data
 	$('#form').append(`<div class="col my-3" id="form${data.id}">
 		<img class="card-img-top" src="${data.thumb_url}" alt="">
 		<div class="card-body">
